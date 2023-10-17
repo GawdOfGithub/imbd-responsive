@@ -3,6 +3,8 @@ import React from 'react'
 import { useContext,createContext } from 'react'
 import { useState } from 'react'
 import { useReducer } from 'react'
+import { useEffect } from 'react'
+// 'https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=34f3a077ae088c77f86f47aef094218f'
 
 
 type Props = {}
@@ -13,6 +15,8 @@ export default function Context ({children}) {
   const [state,dispatch] = useReducer(handleClick,initialState)
   const [sideBar,setSidebar] = useState(false)
   const [searchMode,setSearchMode] = useState(false)
+  const url ='https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=34f3a077ae088c77f86f47aef094218f'
+
   
  function handleClick(state,action)
  {
@@ -30,7 +34,7 @@ export default function Context ({children}) {
          }
       default:
          state
-   }
+   }dfd
 }
 return (
    <MainContext.Provider value={{state,dispatch,sideBar,setSidebar,searchMode,setSearchMode}}>
