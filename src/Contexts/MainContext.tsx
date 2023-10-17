@@ -30,7 +30,7 @@ export default function Context ({children}) {
 //             const realData = await res.json()
 //             setData(realData)
 //             setLoading(false)
-        
+//https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=34f3a077ae088c77f86f47aef094218f
 //          }
          
 
