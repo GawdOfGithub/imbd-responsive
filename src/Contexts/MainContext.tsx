@@ -11,6 +11,8 @@ export default function Context ({children}) {
   
   const initialState = {number:0}
   const [state,dispatch] = useReducer(handleClick,initialState)
+  const [sideBar,setSidebar] = useState(false)
+  const [searchMode,setSearchMode] = useState(false)
   
  function handleClick(state,action)
  {
@@ -31,7 +33,7 @@ export default function Context ({children}) {
    }
 }
 return (
-   <MainContext.Provider value={{state,dispatch}}>
+   <MainContext.Provider value={{state,dispatch,sideBar,setSidebar,searchMode,setSearchMode}}>
       {children}
       </MainContext.Provider>
 
