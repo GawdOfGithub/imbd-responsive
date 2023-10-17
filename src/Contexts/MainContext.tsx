@@ -34,7 +34,7 @@ export default function Context ({children}) {
          }
       default:
          state
-   }dfd
+   }
 }
 return (
    <MainContext.Provider value={{state,dispatch,sideBar,setSidebar,searchMode,setSearchMode}}>
