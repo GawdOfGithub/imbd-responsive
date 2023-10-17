@@ -1,10 +1,10 @@
 
 
 import './App.css'
-import { Navbar } from './Componets/Navbar'
-import { Sidebar } from './Componets/Sidebar'
+import { Navbar } from './Components/Navbar'
+import { Sidebar } from './Components/Sidebar'
 import { useMainContext } from './Contexts/MainContext'
-import { SearchBar } from './Componets/SearchBar'
+import { SearchBar } from './Components/SearchBar'
 
 
 export default function App () {
