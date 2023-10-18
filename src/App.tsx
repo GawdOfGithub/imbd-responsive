@@ -6,17 +6,19 @@ import { Sidebar } from './Components/Sidebar'
 import { useMainContext } from './Contexts/MainContext'
 import { SearchBar } from './Components/SearchBar'
 import Hero from './Components/Hero'
-
+import { MovieList } from './Components/MovieList'
 export default function App () {
  const {sideBar,setSidebar,searchMode,setSearchMode} = useMainContext()     //using the context
   
   return (
     <>
    <div className='h-screen w-screen bg-gradient-to-r from-cyan-500 to-blue-500 '>
-    <Hero/>
-   {/* {(searchMode) && <SearchBar/>}
+     
+   {(searchMode) && <SearchBar/>}
     { !(searchMode) && <Navbar/> }
-   { (sideBar) && <Sidebar/>} */}
+   { (sideBar) && <Sidebar/>}
+   <MovieList/>
+   {/* <Hero/>  */}
     </div>
     </>
   )

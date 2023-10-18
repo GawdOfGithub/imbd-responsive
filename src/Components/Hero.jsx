@@ -1,26 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from '../hooks/useFetch'; // Assuming your custom hook is in a file named useFetch.js
-
+import { useMainContext } from '../Contexts/MainContext';
 const Hero = () => {
-  const url = 'https://jsonplaceholder.typicode.com/todos/1';
-  const { data, loading } = useFetch(null, url);
+  const {search}= useMainContext()
+  const url = 'https://api.themoviedb.org/3/movie/157336?api_key=34f3a077ae088c77f86f47aef094218f&append_to_response=images'
+  const searchUrl ='https://api.themoviedb.org/3/search/movie?query=avtaar&include_adult=true&language=en-US&page=1'
+  const movieUrl = "https://image.tmdb.org/t/p/w500/"
+  const getMovie =` https://api.themoviedb.org/3/search/movie?query=${search}`
+  const { data, loading} = useFetch(null, getMovie);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [todoData, setTodoData] = useState(null);
+  const [movieData, setMovieData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (data)
+        {
     
-        setTodoData(data);
+        setMovieData(data);
         setIsLoading(loading);
+      
+       
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
+      }
+      finally{
+        console.log(movieData)
       }
     };
 
     fetchData();
-  }, [url]);
+  }, [url,data,movieData]);
 
   return (
     <div>
@@ -28,9 +40,14 @@ const Hero = () => {
         <p>Loading...</p>
       ) : (
         <div>
+         
+          {/* <img src={movieUrl + movieData.images.backdrops[0].file_path} alt="image"></img>  */}
+           
+          
           <h2>Data from API:</h2>
-          <h3>{todoData.id}</h3>
-          <pre>{JSON.stringify(todoData, null, 2)}</pre>
+          
+
+          <pre>{JSON.stringify(movieData, null, 2)}</pre>
         </div>
       )}
     </div>

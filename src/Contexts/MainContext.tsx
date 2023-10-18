@@ -13,40 +13,7 @@ export default function Context ({children}) {
   const [state,dispatch] = useReducer(handleClick,initialState)
   const [sideBar,setSidebar] = useState(false)
   const [searchMode,setSearchMode] = useState(false)
-  
-
-//   const runner = (url)=>
-//   {
-//    const[data,setData] = useState()
-//    const[loading,setLoading] = useState(false)
-//     useEffect(()=>
-//     {
-//       const shorter = async ()=>
-//       {
-//          try
-//          {
-//             setLoading(true)
-//             const res = await fetch(url)
-//             const realData = await res.json()
-//             setData(realData)
-//             setLoading(false)
-//https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=34f3a077ae088c77f86f47aef094218f
-//          }
-         
-
-      
-
-//          catch(error)
-//          {
-
-//          console.log(error)
-//          }
-//       }
-//       shorter() }) ,[url]
-     
-
-    
-//   }
+  const [search,setSearch] = useState("")
  function handleClick(state,action)
  {
   
@@ -66,7 +33,7 @@ export default function Context ({children}) {
    }
 }
 return (
-   <MainContext.Provider value={{state,dispatch,sideBar,setSidebar,searchMode,setSearchMode}}>
+   <MainContext.Provider value={{state,dispatch,sideBar,setSidebar,searchMode,setSearchMode,search,setSearch}}>
       {children}
       </MainContext.Provider>
 
