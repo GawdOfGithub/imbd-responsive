@@ -42,7 +42,7 @@ export const MovieList = () => {
     <div key={index}>
     <div className='flex divide-y-4'>
         <div className='mr-4'>
-        <img src={item.backdrop_path ?imageUrl+item.backdrop_path:alternative} alt="image"></img>
+        <img src={item.backdrop_path ?imageUrl+item.backdrop_path:alternative} alt="image" style={{height:100}}></img>
         
         </div>
         <div className= "flex flex-col ">
