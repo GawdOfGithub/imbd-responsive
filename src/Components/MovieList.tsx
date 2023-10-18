@@ -5,8 +5,8 @@ import { useState } from 'react'
 export const MovieList = () => {
     const {search} = useMainContext()
     const url = ` https://api.themoviedb.org/3/search/movie?query=${search}`
+    const alternative = "https://image.tmdb.org/t/p/w500//628Dep6AxEtDxjZoGP78TsOxYbK.jpg"
     const imageUrl = "https://image.tmdb.org/t/p/w500/"
-
     const {data,loading} = useFetch(null,url)
      const[searchData,setSearchData] = useState({ results: []})
      const[isloading,setIsLoading] = useState(false)
@@ -20,7 +20,7 @@ export const MovieList = () => {
                 {
                     
                     setSearchData(data)
-                    console.log(searchData.results[0])
+                    console.log(searchData)
                     setIsLoading(loading);
                 }
             }
@@ -40,15 +40,15 @@ export const MovieList = () => {
     
     (
     <div key={index}>
-    <div className='flex'>
+    <div className='flex divide-y-4'>
         <div className='mr-4'>
-        <img src={imageUrl+item.backdrop_path} alt="image"></img>
-        
+        <img src={item.backdrop_path ?imageUrl+item.backdrop_path: alternative}alt="image"></img>
+
         </div>
         <div className= "flex flex-col">
             <div className='text-extrabold '>{item.original_title}</div>
             <div className=''>{item.release_date}</div>
-            <div className=''>{item.popularity}</div>
+            <div className=''>Rating-{item.popularity}</div>
  
         </div>
     </div>
