@@ -12,7 +12,7 @@ export default function App () {
   
   return (
     <>
-   <div className='h-screen w-screen bg-gradient-to-r from-cyan-500 to-blue-500 '>
+   <div className='h-content min-h-screen w-screen bg-gradient-to-r from-cyan-500  '>
      
    {(searchMode) && <SearchBar/>}
     { !(searchMode) && <Navbar/> }
