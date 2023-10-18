@@ -50,7 +50,7 @@ export const MovieList = () => {
             <div className=''>Released-{item.release_date}</div>
             <div className=''>🌟-{item.popularity}</div>
  
-        </div>
+        </div>fsffsf
     </div>
    
     </div>)))}
