@@ -1,5 +1,6 @@
 import React from 'react'
 import ClearIcon from '@mui/icons-material/Clear';
+
 import { useMainContext } from '../Contexts/MainContext';
 export const SearchBar = () => {
     const {searchMode,setSearchMode,search,setSearch} = useMainContext()

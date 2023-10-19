@@ -14,6 +14,7 @@ export const Navbar = () => {
     (
     
     <div className='w-full bg-gradient-to-r flex min-h-fit justify-between border-b-6'>
+        {sideBar && !searchMode ? <Sidebar /> : null}
       <div className='text-2xl'>
         <button onClick={() => setSidebar(!sideBar)}>
           <MenuIcon />
@@ -30,7 +31,7 @@ export const Navbar = () => {
 
     
      
-      {sideBar && !searchMode ? <Sidebar /> : null}
+    
     </div>):<SearchBar/>}
     </>
   );

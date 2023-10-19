@@ -14,6 +14,7 @@ export default function Context ({children}) {
   const [sideBar,setSidebar] = useState(false)
   const [searchMode,setSearchMode] = useState(false)
   const [search,setSearch] = useState("")
+ 
  function handleClick(state,action)
  {
   

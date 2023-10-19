@@ -1,7 +1,12 @@
 import React from 'react'
 import AppLayout from './AppLayout'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import Home from './Home'
+import Home from './pages/Home'
+import PopularMovies from './pages/PopularMovies'
+import TopRatedMovies from './pages/TopRatedMovies'
+import UpcomingMovies from './pages/UpcomingMovies'
+import NowPlayingMovies from './pages/NowPlaying'
+
  const App = () => {
 
   const router = createBrowserRouter([
@@ -11,7 +16,22 @@ import Home from './Home'
         {
           path:'/',
           element:<Home/>
-        }
+        },
+        {
+        path:'/topRatedMovies',
+        element:<TopRatedMovies/>
+        },
+        {
+          path:'/popularMovies',
+          element:<PopularMovies/>
+          },{
+            path:'/upcomingMovies',
+            element:<UpcomingMovies/>
+            },{
+              path:'/nowPlayingMovies',
+              element:<NowPlayingMovies/>
+              },
+
       ]
     }
   ])
