@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Tester = () => {
+export const Loader = () => {
   return (
     <div className='flex flex-col justify-center items-center h-screen w-screen'>
         <div>

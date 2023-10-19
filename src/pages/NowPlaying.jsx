@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
+import { Loader } from '../Components/Loader'
 import useFetch from '../hooks/useFetch'
 export default function NowPlayingMovies() {
     const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
     const[nowPlayingMovieData,setPopularMoviesData] = useState({ results: []})
-    const[isLoading,setIsLoading] = useState(false)
+    const[isLoading,setIsLoading] = useState(true)
     const{data,loading} = useFetch(nowPlayingMovieData,url)
     const imageUrl = "https://image.tmdb.org/t/p/w500/"
     const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
@@ -30,11 +30,11 @@ export default function NowPlayingMovies() {
         setIsLoading(loading)
     }
     } 
-    fetchData()}, [data,nowPlayingMovieData]
+    fetchData()}, [data,nowPlayingMovieData],isLoading
     )
     return (
         <>
-        {isLoading ?(<p>Loading..</p>) :(nowPlayingMovieData.results.map((item,index)=>
+        {isLoading ?(<Loader/>) :(nowPlayingMovieData.results.map((item,index)=>
         
         (
         <div key={index}>

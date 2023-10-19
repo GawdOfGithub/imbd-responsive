@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
+import { Loader } from '../Components/Loader'
 import useFetch from '../hooks/useFetch'
 export default function TopRatedMovies() {
     const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
     const[topRatedMovieData,setPopularMoviesData] = useState({ results: []})
-    const[isLoading,setIsLoading] = useState(false)
+    const[isLoading,setIsLoading] = useState(true)
     const{data,loading,options} = useFetch(topRatedMovieData,url)
     const imageUrl = "https://image.tmdb.org/t/p/w500/"
     const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
@@ -30,11 +30,11 @@ export default function TopRatedMovies() {
         setIsLoading(loading)
     }
     } 
-    fetchData()}, [data,topRatedMovieData]
+    fetchData()}, [data,topRatedMovieData,isLoading]
     )
     return (
         <>
-        {isLoading ?(<p>Loading..</p>) :(topRatedMovieData.results.map((item,index)=>
+        {isLoading ? <Loader/>:(topRatedMovieData.results.map((item,index)=>
         
         (
         <div key={index}>
