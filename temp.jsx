@@ -119,8 +119,6 @@ export const MovieList = () => {
     
     
     
-    
-    
    
 
 
