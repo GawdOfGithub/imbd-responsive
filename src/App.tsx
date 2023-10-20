@@ -6,17 +6,19 @@ import PopularMovies from './pages/PopularMovies'
 import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
-
+import ErrorPage from './pages/ErrorPage'
 //hello
  const App = () => {
 
   const router = createBrowserRouter([
     {
       element:<AppLayout/>,
+      errorElement:<ErrorPage/>,
       children:[
         {
           path:'/',
-          element:<Home/>
+          element:<Home/>,
+         
           
         },
         {
