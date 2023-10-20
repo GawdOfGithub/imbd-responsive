@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 
+import { Link } from 'react-router-dom';
 const ErrorPage = () => {
   const particlesInit = useCallback(async (engine) => {
     console.log(engine);
@@ -31,7 +32,7 @@ const ErrorPage = () => {
           },
           animation: {
             enable: true,
-            speed: 1,
+            speed: 2,
             minimumValue: 0,
             sync: false,
           },
@@ -74,13 +75,29 @@ const ErrorPage = () => {
     console.log(container);
   }, []);
 
+  
   return (
+    <>
+      <div className='flex flex-col items-center justify-center mt-40'>
+     <div className='text-8xl'>
+      
+      <span className='text-red-500'>4</span>
+      <span className='text-black'>0</span>
+      <span className='text-blue-900'>4</span>
+     </div>
+     <div className='text-3xl mt-10 '>Page not found</div>
+     <Link to="/" style={{zIndex:"100"}} className='text-3xl text-cyan-400 mt-10 border border-fuchsia-400' >Back to home</Link>
+    
+     </div>
     <Particles
       id="tsparticles"
-    
+      url="http://foo.bar/particles.json" // Change to your particle configuration URL
       init={particlesInit}
       loaded={particlesLoaded}
     />
+    
+    </>
+    
   );
 };
 
