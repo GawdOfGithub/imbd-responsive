@@ -7,7 +7,7 @@ import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
 import ErrorPage from './pages/ErrorPage'
-//hello
+
  const App = () => {
 
   const router = createBrowserRouter([
@@ -19,7 +19,7 @@ import ErrorPage from './pages/ErrorPage'
         {
           path:'/',
           element:<Home/>,
-         
+     
           
         },
         {
