@@ -7,7 +7,7 @@ import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
 
-
+//hello
  const App = () => {
 
   const router = createBrowserRouter([
