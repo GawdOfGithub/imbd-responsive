@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
+import { useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 const ErrorPage = () => {
@@ -81,17 +82,17 @@ const ErrorPage = () => {
       <div className='flex flex-col items-center justify-center mt-40'>
      <div className='text-8xl'>
       
-      <span className='text-red-500'>4</span>
+      <span className='text-red-500 tex-8xl'>4</span>
       <span className='text-black'>0</span>
       <span className='text-blue-900'>4</span>
      </div>
-     <div className='text-3xl mt-10 '>Page not found</div>
-     <Link to="/" style={{zIndex:"100"}} className='text-3xl text-cyan-400 mt-10 border border-fuchsia-400' >Back to home</Link>
+     <div className='text-3xl mt-10 font-extrabold text-red-300'><span className='text-yellow-500 text-8xl '>P</span>age not found</div>
+     <Link to="/" style={{zIndex:"100"}} className='text-3xl text-cyan-700 mt-10 border border-black' >Back to home</Link>
     
      </div>
     <Particles
       id="tsparticles"
-      url="http://foo.bar/particles.json" // Change to your particle configuration URL
+     
       init={particlesInit}
       loaded={particlesLoaded}
     />
