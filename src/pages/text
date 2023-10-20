@@ -6,6 +6,6 @@
       <span className='text-blue-900'>4</span>
      </div>
      <div className='text-3xl mt-10 font-extrabold text-red-300'><span className='text-yellow-500 text-8xl '>P</span>age not found</div>
-     <Link to="/" style={{zIndex:"100"}} className='text-3xl text-cyan-700 mt-10 border border-black' >Back to home</Link>
+     <Link to="/"  className='text-3xl text-cyan-700 mt-10 border border-black' >Back to home</Link>
     
      </div>
