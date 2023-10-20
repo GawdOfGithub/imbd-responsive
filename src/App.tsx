@@ -6,7 +6,7 @@ import PopularMovies from './pages/PopularMovies'
 import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
-import { Loader } from './Components/Loader'
+
 
  const App = () => {
 
@@ -16,8 +16,7 @@ import { Loader } from './Components/Loader'
       children:[
         {
           path:'/',
-          element:<Home/>,
-          loader:<Loader/>
+          element:<Home/>
           
         },
         {
