@@ -6,7 +6,7 @@ import { useMainContext } from '../Contexts/MainContext'
 import { SearchBar } from '../Components/SearchBar'
 import { Navbar } from '../Components/Navbar'
 import { MovieList } from '../Components/MovieList'
-import { Tester } from '../Components/Loader'
+
 
 export default function Home () {
    //using the context
