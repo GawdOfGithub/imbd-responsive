@@ -7,8 +7,8 @@ export const SearchBar = () => {
     console.log(search)
   return (
     <div className='flex w-screen justify-center '>
-   <input className='w-5/6' type='text' onChange={(e)=>setSearch(e.target.value)}></input>
-   <button onClick={()=> setSearchMode(!searchMode)}><ClearIcon/></button>
+   <input className='w-5/6 bg-black' type='text'  onChange={(e)=>setSearch(e.target.value)}></input>
+   <button className='bg-black px-6 rounded' onClick={()=> setSearchMode(!searchMode)}><ClearIcon/></button>
     </div>
-  )
+  ) 
 }

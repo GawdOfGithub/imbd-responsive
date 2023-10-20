@@ -13,21 +13,21 @@ export const Navbar = () => {
     { (!searchMode) ?
     (
     
-    <div className='w-full bg-gradient-to-r flex min-h-fit justify-between border-b-6'>
+    <div className='fixed w-full  bg-black flex min-h-fit justify-between '>
         {sideBar && !searchMode ? <Sidebar /> : null}
       <div className='text-2xl'>
-        <button onClick={() => setSidebar(!sideBar)}>
+        <button className='bg-black' onClick={() => setSidebar(!sideBar)}>
           <MenuIcon />
         </button>
       </div>
       <div>
-        <button className='bg-yellow-500 text-black font-bold p-4'>IMDb</button>
+        <button className='bg-yellow-500 text-black font-bold p-1 mt-4 px-4'>IMDb</button>
       </div>
-      <button onClick={() => setSearchMode(true)}>
+      <button className="bg-black"onClick={() => setSearchMode(true)}>
         <SearchOutlinedIcon />
       </button>
-      <button>Sign In</button>
-      <button>About</button>
+      <button className='bg-black'>Sign In</button>
+     
 
     
      

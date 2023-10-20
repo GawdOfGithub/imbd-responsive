@@ -17,13 +17,18 @@ export const MovieList = () => {
         {
             try
             {
-                if(data)
+                if((data) && (search!==""))
                 {
                     
                     setSearchData(data)
                     console.log(searchData.results[0])
                     setIsLoading(loading);
                 }
+                else
+                {
+                    setSearchData({ results: [] })
+                }
+                
             }
             catch(error){
              console.log(error)
@@ -34,16 +39,20 @@ export const MovieList = () => {
             }
         }
         fetchData();
+
+        
+            
+        
     }
     
-    ,[searchData,search,isloading])
+    ,[searchData,search,loading,isloading])
   return (
     <>
     {isloading ?(<Loader/>) :(searchData.results.map((item,index)=>
     
     (
     <div key={index}>
-    <div className='flex divide-y-4'>
+    <div className='flex  '>
         <div className='mr-4'>
         <img src={item.backdrop_path ?imageUrl+item.backdrop_path:alternative} alt="image" style={{height:100}}></img>
         
@@ -52,8 +61,11 @@ export const MovieList = () => {
             <div className='text-extrabold '>{item.original_title}</div>
             <div className=''>Released-{item.release_date}</div>
             <div className=''>🌟-{item.popularity}</div>
+            <div className='mb-6 '></div>
+            <hr/>
  
         </div>
+        
     </div>
    
     </div>)))}
