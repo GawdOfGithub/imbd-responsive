@@ -11,7 +11,11 @@ const ErrorPage = () => {
     console.log(container); 
   }; 
   return ( 
-    <div className="App"> 
+    <div className="">
+      <div>Error:404</div>
+      <div>Page Not Found</div> 
+    
+    
       <Particles 
         id="tsparticles" 
         init={particlesInit} 
