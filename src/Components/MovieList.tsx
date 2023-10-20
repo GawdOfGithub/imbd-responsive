@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import useFetch from '../hooks/useFetch'
 import { useMainContext } from '../Contexts/MainContext'
 import { useState } from 'react'
+import { Loader } from './Loader'
 export const MovieList = () => {
     const {search} = useMainContext()
     const url = ` https://api.themoviedb.org/3/search/movie?query=${search}`
@@ -9,7 +10,7 @@ export const MovieList = () => {
     const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
     const {data,loading} = useFetch(null,url)
      const[searchData,setSearchData] = useState({ results: []})
-     const[isloading,setIsLoading] = useState(false)
+     const[isloading,setIsLoading] = useState(true)
     useEffect(()=>
     {
         const fetchData = async()=>
@@ -33,10 +34,12 @@ export const MovieList = () => {
             }
         }
         fetchData();
-    },[searchData,search])
+    }
+    
+    ,[searchData,search,isloading])
   return (
     <>
-    {isloading ?(<p>Loading..</p>) :(searchData.results.map((item,index)=>
+    {isloading ?(<Loader/>) :(searchData.results.map((item,index)=>
     
     (
     <div key={index}>

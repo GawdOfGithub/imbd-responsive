@@ -1,6 +1,7 @@
 import React from "react"; 
 import Particles from "react-tsparticles"; 
 import { loadFull } from "tsparticles"; 
+import { Link } from 'react-router-dom';
 const ErrorPage = () => { 
   const particlesInit = async (main) => { 
     console.log(main); 
@@ -12,10 +13,17 @@ const ErrorPage = () => {
   }; 
   return ( 
     <div className="">
-      <div>Error:404</div>
-      <div>Page Not Found</div> 
-    
-    
+      <div className="flex flex-col items-center justify-center mt-60">
+      <div className="text-6xl font-extrabold">Error:
+      
+      <span className="text-orange-400" >4</span><span className="">0</span><span className="text-orange-400">4</span></div>
+      <div className="text-3xl">
+     <span className="text-red-500 mr-2">Page</span>
+     <span className="text-green-500 mr-2">Not</span>
+     <span className="text-black">Found</span>
+     </div> 
+      <Link className="mt-6 font-extrabold border-4 border-solid  border-sky-600 hover:border-t-8 hover:border-black " to="/" style={{zIndex:100}}>Back to Home</Link>
+      </div>
       <Particles 
         id="tsparticles" 
         init={particlesInit} 
