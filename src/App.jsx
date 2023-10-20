@@ -7,6 +7,7 @@ import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
 import ErrorPage from './pages/ErrorPage'
+import SignIn from './pages/Theme'
 
  const App = () => {
 
@@ -35,6 +36,10 @@ import ErrorPage from './pages/ErrorPage'
             },{
               path:'/nowPlayingMovies',
               element:<NowPlayingMovies/>
+              },
+              {
+              path:'/signIn',
+              element:<SignIn/>
               },
 
       ]

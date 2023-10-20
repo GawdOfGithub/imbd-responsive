@@ -44,10 +44,9 @@ export default function TopRatedMovies() {
             
             </div>
             <div className= "flex flex-col ">
-                <div className='text-extrabold '>{item.original_title}</div>
-                <div className=''>Released-{item.release_date}</div>
-                <div className=''>🌟-{item.popularity}</div>
-     
+            <div className='text-extrabold text-black'>{item.original_title}</div>
+                <div className='text-black'>Released-{item.release_date}</div>
+                <div className='text-black'>🌟-{item.popularity}</div>
             </div>
         </div>
        

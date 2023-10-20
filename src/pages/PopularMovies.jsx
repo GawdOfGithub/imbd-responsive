@@ -5,7 +5,7 @@ export default function PopularMovies() {
     const url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
     const[popularMovieData,setPopularMoviesData] = useState({ results: []})
     const[isLoading,setIsLoading] = useState(true)
-    const{data,loading,options} = useFetch(popularMovieData,url)
+    const{data,loading} = useFetch(popularMovieData,url)
     const imageUrl = "https://image.tmdb.org/t/p/w500/"
     const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
     useEffect(()=>
@@ -48,9 +48,9 @@ export default function PopularMovies() {
             
             </div>
             <div className= "flex flex-col ">
-                <div className='text-extrabold '>{item.original_title}</div>
-                <div className=''>Released-{item.release_date}</div>
-                <div className=''>🌟-{item.popularity}</div>
+            <div className='text-extrabold text-black'>{item.original_title}</div>
+                <div className='text-black'>Released-{item.release_date}</div>
+                <div className='text-black'>🌟-{item.popularity}</div>
      
             </div>
         </div>

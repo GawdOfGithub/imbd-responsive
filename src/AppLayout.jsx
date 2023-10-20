@@ -1,12 +1,14 @@
 import React from 'react'
 import { Navbar } from './Components/Navbar'
-import { Outlet,useNavigation } from 'react-router-dom'
+import { Outlet} from 'react-router-dom'
+import Theme from './pages/Theme'
 const AppLayout = () => {
   return (
     <>
-    <div className='h-content min-h-screen w-screen bg-gradient-to-r from-cyan-800 '>
+    <div className='h-content min-h-screen '>
        
     <Navbar/>
+    <Theme/>
     <Outlet/>
     </div>
     </>
