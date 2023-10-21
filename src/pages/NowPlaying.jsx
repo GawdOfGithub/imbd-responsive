@@ -47,6 +47,7 @@ export default function NowPlayingMovies() {
                 <div className='text-extrabold text-black'>{item.original_title}</div>
                 <div className='text-black'>Released-{item.release_date}</div>
                 <div className='text-black'>🌟-{item.popularity}</div>
+                <button className='p-0 mt-2 hover:bg-black'>Add to WatchList</button>
      
             </div>
         </div>

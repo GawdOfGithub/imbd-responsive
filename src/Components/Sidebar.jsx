@@ -20,7 +20,7 @@ function handleSideBar()
           <button className='border-b border-solid border-gray-500 text-extrabold text-white  mt-3 ' onClick={() => setSidebar(!sideBar)}>
             <ClearIcon />
           </button>
-          <Link to="/" className='border-b border-solid border-gray-500 text-extrabold text-white  mt-3'onClick={handleSideBar}>
+          <Link to="/watchList" className='border-b border-solid border-gray-500 text-extrabold text-white  mt-3'onClick={handleSideBar}>
             <LiveTvIcon />Watch list😎😎
           </Link>
           <Link className='border-b border-solid border-gray-500 text-extrabold text-white mt-3'onClick={handleSideBar}>

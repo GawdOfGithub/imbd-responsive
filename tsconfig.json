@@ -15,7 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
+    
   },
   "include": ["src", "src/script.js", "public/404.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
+

@@ -7,7 +7,9 @@ import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
 import ErrorPage from './pages/ErrorPage'
-import SignIn from './pages/Theme'
+
+import SignIn from './pages/SignIn'
+import WatchList from './pages/WatchList'
 
  const App = () => {
 
@@ -41,6 +43,11 @@ import SignIn from './pages/Theme'
               path:'/signIn',
               element:<SignIn/>
               },
+              {
+              path:'/watchList',
+              element:<WatchList/>
+              }
+
 
       ]
     }
