@@ -5,7 +5,7 @@ export default function TopRatedMovies() {
     const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
     const[topRatedMovieData,setPopularMoviesData] = useState({ results: []})
     const[isLoading,setIsLoading] = useState(true)
-    const{data,loading,options} = useFetch(topRatedMovieData,url)
+    const{data,loading} = useFetch(topRatedMovieData,url)
     const imageUrl = "https://image.tmdb.org/t/p/w500/"
     const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
     useEffect(()=>

@@ -11,7 +11,8 @@ const AppLayout = () => {
        <div className=''>
     <Navbar/>
     </div>
-    <div className='mt-16'>
+    <div className='mt-2'>
+      <div className='z-50 text-black ml-12 font-extrabold '>Created with ❤️  by Anurag Bhandari </div>
     <Outlet/>
     </div>
     </div>
