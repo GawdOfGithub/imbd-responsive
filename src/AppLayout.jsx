@@ -6,13 +6,17 @@ const AppLayout = () => {
   return (
     <>
     <div className='h-content min-h-screen  '>
-      <Theme/>
+      {/* <Theme/> */}
       <div className='flex flex-col'> 
+     
        <div className=''>
-    <Navbar/>
+      <div className='fiixed'><Navbar/></div>
+    
+    <div className='mt-10 text-black flex justify-center font-extrabold' >Made with 💕💕 by Anurag Bhandari</div>
     </div>
-    <div className='mt-2'>
-      <div className='z-50 text-black ml-12 font-extrabold '>Created with ❤️  by Anurag Bhandari </div>
+  
+    <div className=''>
+     
     <Outlet/>
     </div>
     </div>

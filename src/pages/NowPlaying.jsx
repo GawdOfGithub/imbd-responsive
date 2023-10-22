@@ -56,3 +56,16 @@ export default function NowPlayingMovies() {
         </>
       )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
