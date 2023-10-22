@@ -7,6 +7,8 @@ import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
 import NowPlayingMovies from './pages/NowPlaying'
 import ErrorPage from './pages/ErrorPage'
+import ResetPassword from './pages/ResetPassword'
+import Register from './pages/Register'
 
 import SignIn from './pages/SignIn'
 import WatchList from './pages/WatchList'
@@ -46,7 +48,15 @@ import WatchList from './pages/WatchList'
               {
               path:'/watchList',
               element:<WatchList/>
-              }
+              },
+              {
+                path:'/ResetPassword',
+                element:<ResetPassword/>
+                },
+                {
+                  path:'/register',
+                  element:<Register/>
+                  }
 
 
       ]
