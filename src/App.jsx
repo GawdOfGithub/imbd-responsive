@@ -14,9 +14,12 @@ import SignIn from './pages/SignIn'
 import WatchList from './pages/WatchList'
 
  const App = () => {
-
+  console.log(import.meta.env.VITE_API_KEY)
+  console.log(import.meta.env.VITE_API_KEY)
+  console.log(import.meta.env.VITE_API_KEY)
   const router = createBrowserRouter([
     {
+      
      
        element:<AppLayout/>,
        errorElement:<ErrorPage/>,

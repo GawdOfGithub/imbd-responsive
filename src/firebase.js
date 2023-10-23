@@ -7,7 +7,6 @@ import {
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
-
 import {
   getFirestore,
   query,
@@ -17,34 +16,15 @@ import {
   addDoc,
 } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-// const apiKey = import.meta.env.VITE_REACT_APP_API;
-// const authDomain = import.meta.env.VITE_REACT_APP_AUTH_DOMAIN;
-// const projectId = import.meta.env.VITE_REACT_APP_PROJECT_ID;
-// const storageBucket = import.meta.env.VITE_REACT_APP_STORAGE_BUCKET;
-// const messagingSenderId = import.meta.env.VITE_REACT_APP_MESSAGING_SENDER_ID;
-// const appId = import.meta.env.VITE_REACT_APP_APP_ID;
-// const measurementId = import.meta.env.VITE_REACT_APP_MEASUREMENT_ID;
-
-
 const firebaseConfig = {
-  apiKey: "AIzaSyBQ-xD_tGKmhzh1dlDbuZO_rHB7kxqsSF8",
-
-  authDomain: "moviemasala-65898.firebaseapp.com",
-
-  projectId: "moviemasala-65898",
-
-  storageBucket: "moviemasala-65898.appspot.com",
-
-  messagingSenderId: "883834690031",
-
-  appId: "1:883834690031:web:d0aa0ab5ac43216591fe1a",
-
-  measurementId: "G-6D9L069J9X"
-
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID
 };
-
-
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
