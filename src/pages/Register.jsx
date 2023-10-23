@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import {registerWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuth } from '../Contexts/AuthContext';
 export default function Register() {
+  const {registerWithEmailAndPassword} = useAuth()
   const [visibility, setVisibility] = useState("false");
   const [name, setName] = useState("")
    const [email, setEmail] = useState("")

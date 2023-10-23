@@ -2,8 +2,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
- import  {sendPasswordReset} from "../firebase";
+ import { useAuth } from '../Contexts/AuthContext';
 export default function ResetPassword() {
+  const {sendPasswordReset} = useAuth()
   const [email, setEmail] = useState("");
   
   

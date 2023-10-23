@@ -5,7 +5,11 @@ import { useMainContext } from '../Contexts/MainContext';
 import { Sidebar } from './Sidebar';
 import { SearchBar } from './SearchBar';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Contexts/AuthContext';
+import Person4Icon from '@mui/icons-material/Person4';
+
 export const Navbar = () => {
+  const {user_is_logged_in,logout} = useAuth()
   const { sideBar, setSidebar, searchMode, setSearchMode } = useMainContext();
   
 
@@ -17,7 +21,7 @@ export const Navbar = () => {
     <div className='fixed w-full  bg-black flex min-h-content justify-between text-white'>
         {sideBar && !searchMode ? <Sidebar /> : null}
       <div className='text-2xl'>
-        <Link className='bg-black text-white mt-{-1}' onClick={() => setSidebar(!sideBar)}>
+        <Link className='bg-black text-white ' onClick={() => setSidebar(!sideBar)}>
           <MenuIcon />
         </Link>
       </div>
@@ -27,8 +31,12 @@ export const Navbar = () => {
       <Link className="bg-black text-white"onClick={() => setSearchMode(true)}>
         <SearchOutlinedIcon />
       </Link>
-      <Link to="/signIn" className='bg-black text-white' >Sign In</Link>
-     
+
+      {
+        user_is_logged_in?
+      (<button  className='bg-black text-white mr-4'  onClick={logout}>{<Person4Icon/>}Logout</button>):
+      (<Link to="/signIn" className='bg-black text-white mr-4' >SignIn</Link>)
+      }
 
     
      
