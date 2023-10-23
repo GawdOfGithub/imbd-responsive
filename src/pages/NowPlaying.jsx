@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Loader } from '../Components/Loader'
 import useFetch from '../hooks/useFetch'
-import { KingBed } from '@mui/icons-material'
 export default function NowPlayingMovies() {
     const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
     const[nowPlayingMovieData,setPopularMoviesData] = useState({ results: []})

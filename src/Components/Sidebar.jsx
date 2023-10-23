@@ -5,7 +5,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { useMainContext } from '../Contexts/MainContext';
 import { Link } from 'react-router-dom';
 import MovieCreationIcon from '@mui/icons-material/MovieCreation';
-import SignIn from '../pages/Theme';
 export const Sidebar = () => {
   const { sideBar, setSidebar } = useMainContext();
   

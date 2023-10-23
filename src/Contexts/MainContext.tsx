@@ -3,9 +3,8 @@ import React from 'react'
 import { useContext,createContext } from 'react'
 import { useState } from 'react'
 import { useReducer } from 'react'
-import { useEffect } from 'react'
 
-type Props = {}
+
 const MainContext = createContext(null)
 export default function Context ({children}) {
   
