@@ -50,7 +50,7 @@ import WatchList from './pages/WatchList'
               element:<WatchList/>
               },
               {
-                path:'/ResetPassword',
+                path:'/resetPassword',
                 element:<ResetPassword/>
                 },
                 {

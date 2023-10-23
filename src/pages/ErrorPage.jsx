@@ -9,7 +9,7 @@ const ErrorPage = () => {
     await loadFull(main); 
   }; 
   const particlesLoaded = (container) => { 
-    console.log(container); 
+    console.log(container);
   }; 
   return ( 
     <div className="">
