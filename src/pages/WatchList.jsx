@@ -1,7 +1,15 @@
 import React from 'react'
+import { useAuth } from '../Contexts/AuthContext'
 
 export default function WatchList() {
+  const {user} = useAuth()
   return (
-    <div>WatchList</div>
+    <>
+    {
+      user ? (<div>Hello world</div>):(<div>Hello world 2</div>)
+    }
+    
+    </>
+      
   )
 }

@@ -82,7 +82,7 @@ const sendPasswordReset = async (email) => {
 
 export default function AuthProvider({ children }) {
 
-  const  [user] = useAuthState(app.auth())
+  const  [user] = useAuthState(auth)
    
     const [user_is_logged_in, setUser_is_logged_in] = useState("false");
     const [userName,setUserName] = useState("") 
@@ -108,7 +108,7 @@ export default function AuthProvider({ children }) {
      registerWithEmailAndPassword,
      sendPasswordReset,
      signInWithEmailAndPassword,
-     useAuthState
+     useAuthState,user
     }}>
       {children}
     </Auth.Provider>

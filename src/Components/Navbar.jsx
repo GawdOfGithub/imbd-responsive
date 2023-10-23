@@ -9,7 +9,7 @@ import { useAuth } from '../Contexts/AuthContext';
 import Person4Icon from '@mui/icons-material/Person4';
 
 export const Navbar = () => {
-  const {user_is_logged_in,logout,useAuthState} = useAuth()
+  const {user_is_logged_in,logout,useAuthState,user} = useAuth()
   const { sideBar, setSidebar, searchMode, setSearchMode } = useMainContext();
   
 
@@ -33,7 +33,7 @@ export const Navbar = () => {
       </Link>
 
       {
-        user_is_logged_in?
+        user?
       (<button  className='bg-black text-white mr-4'  onClick={logout}>{<Person4Icon/>}Logout</button>):
       (<Link to="/signIn" className='bg-black text-white mr-4' >SignIn</Link>)
       }
