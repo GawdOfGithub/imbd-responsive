@@ -9,7 +9,7 @@ import { useAuth } from '../Contexts/AuthContext';
 import Person4Icon from '@mui/icons-material/Person4';
 
 export const Navbar = () => {
-  const {user_is_logged_in,logout} = useAuth()
+  const {user_is_logged_in,logout,useAuthState} = useAuth()
   const { sideBar, setSidebar, searchMode, setSearchMode } = useMainContext();
   
 

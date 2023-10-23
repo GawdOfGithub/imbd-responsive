@@ -1,6 +1,8 @@
 import React, { createContext, useContext } from 'react';
 import { useState } from 'react';
 import  app from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 
 const Auth = createContext();
 import {
@@ -11,7 +13,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
-  signInWithRedirect,
+  
 } from "firebase/auth";
 import {
   getFirestore,
@@ -28,7 +30,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const signInWithGoogle = async () => {
   try {
-    const res = await signInWithRedirect(auth, googleProvider);
+    const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
     const q = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(q);
@@ -79,6 +81,8 @@ const sendPasswordReset = async (email) => {
 };
 
 export default function AuthProvider({ children }) {
+
+  const  [user] = useAuthState(app.auth())
    
     const [user_is_logged_in, setUser_is_logged_in] = useState("false");
     const [userName,setUserName] = useState("") 
@@ -103,7 +107,8 @@ export default function AuthProvider({ children }) {
      logInWithEmailAndPassword,
      registerWithEmailAndPassword,
      sendPasswordReset,
-     signInWithEmailAndPassword
+     signInWithEmailAndPassword,
+     useAuthState
     }}>
       {children}
     </Auth.Provider>
