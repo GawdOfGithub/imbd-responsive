@@ -7,7 +7,7 @@ const AppLayout = () => {
     <>
     
       <div className="h-content min-h-screen  ">
-       <Theme /> 
+       {/* <Theme />  */}
         <div className="flex flex-col">
           <div className="">
             <Navbar />

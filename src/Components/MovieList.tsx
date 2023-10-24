@@ -33,29 +33,13 @@ export const MovieList = () => {
 
   return (
     <>
-      {isloading ? (
-        <Loader />
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
-          {searchData.results.map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-4">
-              <img
-                src={item.backdrop_path ? imageUrl + item.backdrop_path : alternative}
-                alt="image"
-                className="w-full h-48 object-cover rounded-md"
-              />
-              <div className="mt-4">
-                <div className="text-xl font-extrabold text-black">{item.original_title}</div>
-                <div className="text-gray-600">Released: {item.release_date}</div>
-                <div className="text-yellow-500">🌟 {item.popularity}</div>
-                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none">
-                  Add to Watchlist
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+      <div>
+        {searchData.results.map((result, index) => (
+          <div key={index} className='text-black'>
+            {JSON.stringify(result)}
+          </div>
+        ))}
+      </div>
     </>
   );
 };
