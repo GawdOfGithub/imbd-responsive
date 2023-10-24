@@ -2,7 +2,7 @@ import React, { createContext, useContext } from 'react';
 import { useState } from 'react';
 import  app from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Auth = createContext();
 import {
@@ -91,10 +91,12 @@ const getUserDocRef = (user) => {
 
 export default function AuthProvider({ children }) {
 
+
   const  [user] = useAuthState(auth)
    
     const [user_is_logged_in, setUser_is_logged_in] = useState("false");
     const [userName,setUserName] = useState("") 
+    const [emptyWatchlist, setEmptyWatchlist] = useState(true);
     
     const logout = async () => {
       try{
@@ -106,6 +108,43 @@ export default function AuthProvider({ children }) {
       console.log(error);
     }
   }
+  const handleUpdate = async(id)=> {
+    if (user) {
+      try {
+        const userDocRef = getUserDocRef(user);
+       // Assuming 'uid' is the user's unique identifier
+        console.log("User UID:", user.uid);
+        console.log("User Document Path:", userDocRef.path);
+        const userDocSnapshot = await getDoc(userDocRef);
+  
+        if (userDocSnapshot.exists()) {
+          // The user document already exists, update the 'ids' field
+          const userData = userDocSnapshot.data();
+          const currentIds = userData.ids || [];
+          const updatedIds = [...currentIds, id];
+  
+          await updateDoc(userDocRef, {
+            ids: updatedIds,
+          }, { merge: true }); 
+          alert(id);
+        } else {
+          // The user document does not exist, create it with 'ids' field
+          await setDoc(userDocRef, {
+            ids: [id],
+          });
+          alert(id);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    else
+    {
+      alert("Please sign in before adding movies")
+      
+    }
+  }
+  
 
   return (
     <Auth.Provider value={{
@@ -115,7 +154,7 @@ export default function AuthProvider({ children }) {
      sendPasswordReset,
      signInWithEmailAndPassword,
      useAuthState,user,db,collectionRef,
-     updateDoc,doc,FieldValue,getDoc,setDoc,getUserDocRef
+     updateDoc,doc,FieldValue,getDoc,setDoc,getUserDocRef,handleUpdate
     }}>
       {children}
     </Auth.Provider>

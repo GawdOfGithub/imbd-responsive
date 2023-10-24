@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export default function WatchList() {
   const { user,getUserDocRef} = useAuth();
   
-
+ 
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="text-center">
@@ -23,6 +23,8 @@ export default function WatchList() {
           </div>
         ) : (
 
+
+          
           <div>
             <img src="variant1.png" alt="Empty Watchlist" className="mx-auto max-w-lg" />
             <p className="text-black font-extrabold text-xl text-center mt-4">
