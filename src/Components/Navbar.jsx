@@ -33,7 +33,7 @@ export const Navbar = () => {
               className="bg-black text-white"
               onClick={() => setSearchMode(true)}
             >
-              <SearchOutlinedIcon />
+             <Link to="/"><SearchOutlinedIcon /></Link>
             </button>
             {user ? (
               <button

@@ -1,7 +1,7 @@
 import React from 'react'
 import AppLayout from './AppLayout'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom'
-import Home from './pages/Home'
+
 import PopularMovies from './pages/PopularMovies'
 import TopRatedMovies from './pages/TopRatedMovies'
 import UpcomingMovies from './pages/UpcomingMovies'
@@ -12,6 +12,7 @@ import Register from './pages/Register'
 
 import SignIn from './pages/SignIn'
 import WatchList from './pages/WatchList'
+import Home from './pages/Home'
 
  const App = () => {
   console.log(import.meta.env.VITE_API_KEY)

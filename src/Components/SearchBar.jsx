@@ -1,10 +1,10 @@
 import React from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useMainContext } from '../Contexts/MainContext';
-
+import { Link } from 'react-router-dom';
 export const SearchBar = () => {
   const { searchMode, setSearchMode, search, setSearch } = useMainContext();
-
+  
   return (
     <div className="flex justify-center w-full">
       <div className="w-5/6 bg-black flex">
@@ -15,12 +15,14 @@ export const SearchBar = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button
+     
+        <Link to="/"
           className="bg-black p-2 rounded-full hover:bg-gray-700 focus:outline-none"
           onClick={() => setSearchMode(!searchMode)}
         >
           <ClearIcon className="text-white" />
-        </button>
+        </Link>
+        
       </div>
     </div>
   );
