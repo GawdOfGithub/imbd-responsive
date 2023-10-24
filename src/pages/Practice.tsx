@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import useFetch from './hooks/useFetch';
-import { useMainContext } from './Contexts/MainContext';
+import useFetch from '../hooks/useFetch';
+import { useMainContext } from '../Contexts/MainContext';
 import { useState } from 'react';
-import { Loader } from './Components/Loader';
 
-const App = () => {
+
+export const Practise = () => {
   const { search } = useMainContext();
   const url = `https://api.themoviedb.org/3/search/movie?query=${search}`;
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
@@ -34,9 +34,9 @@ const App = () => {
   return (
     <>
       {isloading ? (
-        <Loader />
+    (null)
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
           {searchData.results.map((item, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg p-4">
               <img
@@ -59,4 +59,3 @@ const App = () => {
     </>
   );
 };
-export default App

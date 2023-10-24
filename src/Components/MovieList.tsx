@@ -36,7 +36,7 @@ export const MovieList = () => {
       {isloading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {searchData.results.map((item, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg p-4">
               <img
