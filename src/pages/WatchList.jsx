@@ -2,8 +2,10 @@ import React from 'react';
 import { useAuth } from '../Contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
+
 export default function WatchList() {
-  const { user } = useAuth();
+  const { user,getUserDocRef} = useAuth();
+  
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -20,6 +22,7 @@ export default function WatchList() {
             <div className="text-5xl mt-4">🍿</div>
           </div>
         ) : (
+
           <div>
             <img src="variant1.png" alt="Empty Watchlist" className="mx-auto max-w-lg" />
             <p className="text-black font-extrabold text-xl text-center mt-4">

@@ -22,11 +22,17 @@ import {
   collection,
   where,
   addDoc,
+  updateDoc,
+  FieldValue,
+  doc,
+  getDoc,
+  setDoc
 } from "firebase/firestore";
 
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+const collectionRef = collection(db,"users")
 
 const signInWithGoogle = async () => {
   try {
@@ -79,6 +85,9 @@ const sendPasswordReset = async (email) => {
     alert(err.message);
   }
 };
+const getUserDocRef = (user) => {
+  return doc(collection(db, "users"), user.uid);
+};
 
 export default function AuthProvider({ children }) {
 
@@ -98,9 +107,6 @@ export default function AuthProvider({ children }) {
     }
   }
 
-
-  
-
   return (
     <Auth.Provider value={{
      user_is_logged_in,setUser_is_logged_in,userName,setUserName,logout, signInWithGoogle,auth,
@@ -108,7 +114,8 @@ export default function AuthProvider({ children }) {
      registerWithEmailAndPassword,
      sendPasswordReset,
      signInWithEmailAndPassword,
-     useAuthState,user
+     useAuthState,user,db,collectionRef,
+     updateDoc,doc,FieldValue,getDoc,setDoc,getUserDocRef
     }}>
       {children}
     </Auth.Provider>
