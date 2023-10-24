@@ -5,41 +5,29 @@ import { useState } from 'react';
 import { Loader } from './Loader';
 import { useAuth } from '../Contexts/AuthContext';
 import app from '../firebase';
-export const MovieList = () => {
+export const RealWatchList = () => {
   const {updateDoc,collectionRef,doc,setDoc,user,getDoc,getUserDocRef,handleUpdate} = useAuth()
-  const { search } = useMainContext();
+  
   const url = `https://api.themoviedb.org/3/movie/447404`;
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   const alternative = 'https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg';
   const { data, loading } = useFetch(null, url);
-  const [searchData, setSearchData] = useState({ results: [] });
+  const [watchData, setWatchData] = useState({data :[]});
   const [isloading, setIsLoading] = useState(true);
 
- console.log(searchData)
+ console.log(watchData)
 
  
- const handleUpdateLocal = async (id)=>
- { 
-  try{
-   await handleUpdate(id)
-  }
-  catch(error)
-  {
-    console.log(error);
-
-  }
-
- }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (data && search !== '') {
-          setSearchData(data);
+        if (data ) {
+          setWatchData(data);
           setIsLoading(loading);
-        } else {
-          setSearchData({ results: [] });
-        }
+        } 
+          
+        
       } catch (error) {
         console.log(error);
       } finally {
@@ -47,7 +35,7 @@ export const MovieList = () => {
       }
     };
     fetchData();
-  }, [searchData, search, loading, isloading]);
+  }, [watchData,loading, isloading]);
 
   return (
     <>
@@ -55,7 +43,7 @@ export const MovieList = () => {
         <Loader />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
-          {searchData.results.map((item, index) => (
+          {watchData.map((item, index) => (
             <div key={index} className="bg-white rounded-lg shadow-lg p-4">
               <img
                 src={item.backdrop_path ? imageUrl + item.backdrop_path : alternative}
