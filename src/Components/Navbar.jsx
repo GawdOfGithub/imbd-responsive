@@ -9,39 +9,50 @@ import { useAuth } from '../Contexts/AuthContext';
 import Person4Icon from '@mui/icons-material/Person4';
 
 export const Navbar = () => {
-  const {user_is_logged_in,logout,useAuthState,user} = useAuth()
+  const { user_is_logged_in, logout, useAuthState, user } = useAuth();
   const { sideBar, setSidebar, searchMode, setSearchMode } = useMainContext();
-  
 
   return (
-    <>
-    { (!searchMode) ?
-    (
-    
-    <div className='fixed w-full  bg-black flex min-h-content justify-between text-white'>
-        {sideBar && !searchMode ? <Sidebar /> : null}
-      <div className='text-2xl'>
-        <Link className='bg-black text-white ' onClick={() => setSidebar(!sideBar)}>
-          <MenuIcon />
-        </Link>
-      </div>
-      <div>
-        <Link className='bg-yellow-500 text-black font-bold p-1 mt-4 px-4'>IMDb</Link>
-      </div>
-      <Link className="bg-black text-white"onClick={() => setSearchMode(true)}>
-        <SearchOutlinedIcon />
-      </Link>
-
-      {
-        user?
-      (<button  className='bg-black text-white mr-4'  onClick={logout}>{<Person4Icon/>}Logout</button>):
-      (<Link to="/signIn" className='bg-black text-white mr-4' >SignIn</Link>)
-      }
-
-    
-     
-    
-    </div>):<SearchBar/>}
-    </>
+    <div className="fixed w-full bg-black min-h-content text-white">
+      {(!searchMode) ? (
+        <>
+          {sideBar && !searchMode ? <Sidebar /> : null}
+          <div className="flex justify-between items-center px-4 py-2">
+            <div className="text-2xl">
+              <button
+                className="bg-black text-white"
+                onClick={() => setSidebar(!sideBar)}
+              >
+                <MenuIcon />
+              </button>
+            </div>
+            <Link to="/" className="text-yellow-500 text-2xl font-bold">
+              IMDb
+            </Link>
+            <button
+              className="bg-black text-white"
+              onClick={() => setSearchMode(true)}
+            >
+              <SearchOutlinedIcon />
+            </button>
+            {user ? (
+              <button
+                className="bg-black text-white flex items-center mr-4"
+                onClick={logout}
+              >
+                <Person4Icon className="mr-1" />
+                Logout
+              </button>
+            ) : (
+              <Link to="/signIn" className="bg-black text-white mr-4">
+                SignIn
+              </Link>
+            )}
+          </div>
+        </>
+      ) : (
+        <SearchBar />
+      )}
+    </div>
   );
 };

@@ -1,63 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import { Loader } from '../Components/Loader'
-import useFetch from '../hooks/useFetch'
+import React, { useEffect, useState } from 'react';
+import { Loader } from '../Components/Loader';
+import useFetch from '../hooks/useFetch';
+
 export default function NowPlayingMovies() {
-    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
-    const[nowPlayingMovieData,setPopularMoviesData] = useState({ results: []})
-    const[isLoading,setIsLoading] = useState(true)
-    const{data,loading} = useFetch(nowPlayingMovieData,url)
-    const imageUrl = "https://image.tmdb.org/t/p/w500/"
-    const alternative = "https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg"
-    useEffect(()=>
-    {
-        const fetchData = async()=>
-        {
-            try{
-        if(data)
-        {
-            console.log(data)
-            setPopularMoviesData(data)
-        }
+  const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+  const [nowPlayingMovieData, setNowPlayingMoviesData] = useState({ results: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const { data, loading } = useFetch(nowPlayingMovieData, url);
+  const imageUrl = 'https://image.tmdb.org/t/p/w500/';
+  const alternative = 'https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg';
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (data) {
+          setNowPlayingMoviesData(data);
         }
-    
-    catch(error)
-    {
-        console.log(error)
-    }
-    finally
-    {
-        setIsLoading(loading)
-    }
-    } 
-    fetchData()}, [data,nowPlayingMovieData],isLoading
-    )
-    return (
-        <>
-        {isLoading ?(<Loader/>) :(nowPlayingMovieData.results.map((item,index)=>
-        
-        (
-        <div key={index}>
-        <div className='flex divide-y-4'>
-            <div className='mr-4'>
-            <img src={item.backdrop_path ?imageUrl+item.backdrop_path:alternative} alt="image" style={{height:100}}></img>
-            
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(loading);
+      }
+    };
+    fetchData();
+  }, [data, nowPlayingMovieData, isLoading]);
+
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+          {nowPlayingMovieData.results.map((item, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-lg p-4">
+              <img
+                src={item.backdrop_path ? imageUrl + item.backdrop_path : alternative}
+                alt="image"
+                className="w-full h-48 object-cover rounded-md"
+              />
+              <div className="mt-4">
+                <div className="text-xl font-extrabold text-black">{item.original_title}</div>
+                <div className="text-gray-600">Released: {item.release_date}</div>
+                <div className="text-yellow-500">🌟 {item.popularity}</div>
+                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none">
+                  Add to Watchlist
+                </button>
+              </div>
             </div>
-            <div className= "flex flex-col ">
-                <div className='text-extrabold text-black'>{item.original_title}</div>
-                <div className='text-black'>Released-{item.release_date}</div>
-                <div className='text-black'>🌟-{item.popularity}</div>
-                <button className='p-0 mt-2 hover:bg-black'>Add to WatchList</button>
-     
-            </div>
+          ))}
         </div>
-       
-        </div>)))}
-        </>
-      )
+      )}
+    </>
+  );
 }
-
-
-
-
-
