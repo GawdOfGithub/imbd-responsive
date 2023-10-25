@@ -123,6 +123,7 @@ export default function AuthProvider({ children }) {
           setEmptyWatchlist(false)
           // The user document already exists, update the 'ids' field
           const userData = userDocSnapshot.data();
+          console.log(userData)
           const currentIds = userData.ids || [];
           const updatedIds = [...currentIds, id];
   
@@ -130,12 +131,18 @@ export default function AuthProvider({ children }) {
             ids: updatedIds,
           }, { merge: true }); 
           alert(id);
+         
+
+
+
         } else {
           // The user document does not exist, create it with 'ids' field
           await setDoc(userDocRef, {
             ids: [id],
           });
           alert(id);
+        
+
         }
       } catch (err) {
         console.log(err);
