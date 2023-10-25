@@ -51,6 +51,7 @@ const signInWithGoogle = async () => {
     }
     
     console.log(user.name)
+    alert(`Welcome to the gang  ${user.displayName}`)
   } catch (err) {
     console.error(err);
     alert(err.message);

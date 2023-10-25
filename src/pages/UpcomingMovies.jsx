@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Loader } from '../Components/Loader';
 import useFetch from '../hooks/useFetch';
-
+import { useAuth } from '../Contexts/AuthContext';
 export default function UpcomingMovies() {
   const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
   const [upcomingMovieData, setUpcomingMovieData] = useState({ results: [] });
@@ -9,6 +9,7 @@ export default function UpcomingMovies() {
   const { data, loading } = useFetch(upcomingMovieData, url);
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   const alternative = 'https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg';
+  const {handleUpdate} = useAuth()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +25,18 @@ export default function UpcomingMovies() {
     };
     fetchData();
   }, [data, upcomingMovieData, isLoading]);
-
+  const handleUpdateLocal = async (id)=>
+  { 
+   try{
+    await handleUpdate(id)
+   }
+   catch(error)
+   {
+     console.log(error);
+ 
+   }
+ 
+  }
   return (
     <>
       {isLoading ? (
@@ -42,7 +54,7 @@ export default function UpcomingMovies() {
                 <div className="text-xl font-extrabold text-black">{item.original_title}</div>
                 <div className="text-gray-600">Released: {item.release_date}</div>
                 <div className="text-yellow-500">🌟 {item.popularity}</div>
-                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none">
+                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none"onClick= {()=>handleUpdateLocal(item.id)}>
                   Add to Watchlist
                 </button>
               </div>
