@@ -54,7 +54,7 @@ const Theme2 = () => {
                 enable: true,
                 out_mode: "out",
                 random: false,
-                speed: 3,
+                speed: 10,
                 straight: false,
               },
               rotate: {
@@ -75,7 +75,7 @@ const Theme2 = () => {
                   {
                     fill: true,
                     font: "Verdana",
-                    value: ["😎", "🍁"],
+                    value: ["😎", "🍿"],
                     style: "",
                     weight: 400,
                   },

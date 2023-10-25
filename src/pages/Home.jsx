@@ -1,13 +1,21 @@
-
-import { MovieList } from '../Components/MovieList'
 import React from 'react'
-import Theme2 from '../Components/Theme2'
+import PolygonTheme from '../Components/PolygonTheme'
+import Theme2 from '../Components/AutumnTheme'
+import { MovieList } from '../Components/MovieList'
+
+
 export default function Home () {
+   //using the context
+  
+ 
  return(
   <>
-<div className='h-content min-h-screen w-screen bg-gradient-to-r from-cyan-800 '>
 
+<div className='h-content min-h-screen w-screen  '>
+
+ 
   <MovieList/>
+  
 </div> 
   </>
  )

@@ -11,10 +11,12 @@ import ResetPassword from './pages/ResetPassword'
 import Register from './pages/Register'
 import { RealWatchList } from './Components/RealWatchList'
 
+
 import SignIn from './pages/SignIn'
 import WatchList from './pages/WatchList'
 
  const App = () => {
+ 
   const router = createBrowserRouter([
     {
        element:<AppLayout/>,
