@@ -118,6 +118,7 @@ export default function AuthProvider({ children }) {
         const userDocSnapshot = await getDoc(userDocRef);
   
         if (userDocSnapshot.exists()) {
+          setEmptyWatchlist(false)
           // The user document already exists, update the 'ids' field
           const userData = userDocSnapshot.data();
           const currentIds = userData.ids || [];
@@ -154,7 +155,7 @@ export default function AuthProvider({ children }) {
      sendPasswordReset,
      signInWithEmailAndPassword,
      useAuthState,user,db,collectionRef,
-     updateDoc,doc,FieldValue,getDoc,setDoc,getUserDocRef,handleUpdate
+     updateDoc,doc,FieldValue,getDoc,setDoc,getUserDocRef,handleUpdate,emptyWatchlist
     }}>
       {children}
     </Auth.Provider>

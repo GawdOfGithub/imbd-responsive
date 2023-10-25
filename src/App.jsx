@@ -1,10 +1,65 @@
 import React from 'react'
+import AppLayout from './AppLayout'
+import { createBrowserRouter,RouterProvider } from 'react-router-dom'
+import Home from './pages/Home'
+import PopularMovies from './pages/PopularMovies'
+import TopRatedMovies from './pages/TopRatedMovies'
+import UpcomingMovies from './pages/UpcomingMovies'
+import NowPlayingMovies from './pages/NowPlaying'
+import ErrorPage from './pages/ErrorPage'
+import ResetPassword from './pages/ResetPassword'
+import Register from './pages/Register'
 import { RealWatchList } from './Components/RealWatchList'
 
-export default function App() {
+import SignIn from './pages/SignIn'
+import WatchList from './pages/WatchList'
+
+ const App = () => {
+  const router = createBrowserRouter([
+    {
+       element:<AppLayout/>,
+       errorElement:<ErrorPage/>,
+      children:[
+        {
+          path:'/',
+          element:<Home/>, 
+        },
+        {
+        path:'/topRatedMovies',
+        element:<TopRatedMovies/>
+        },
+        {
+          path:'/popularMovies',
+          element:<PopularMovies/>
+          },{
+            path:'/upcomingMovies',
+            element:<UpcomingMovies/>
+            },{
+              path:'/nowPlayingMovies',
+              element:<NowPlayingMovies/>
+              },
+              {
+              path:'/signIn',
+              element:<SignIn/>
+              },
+              {
+              path:'/watchList',
+              element:<WatchList/>
+              },
+              {
+                path:'/resetPassword',
+                element:<ResetPassword/>
+                },
+                {
+                  path:'/register',
+                  element:<Register/>
+                  }
+                  
+      ]
+    }
+  ])
   return (
-    <div>
-      <RealWatchList/>
-    </div>
+    <RouterProvider router={router}/>
   )
 }
+export default App
