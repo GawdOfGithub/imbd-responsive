@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuth } from '../Contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 export default function Register() {

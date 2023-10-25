@@ -2,7 +2,6 @@ import React, { createContext, useContext } from 'react';
 import { useState } from 'react';
 import  app from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navigate, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 const Auth = createContext();
@@ -101,7 +100,7 @@ export default function AuthProvider({ children }) {
     const [user_is_logged_in, setUser_is_logged_in] = useState("false");
     const [userName,setUserName] = useState("") 
     const [emptyWatchlist, setEmptyWatchlist] = useState(true);
-    const [bigData,setBigData] = useState([])
+    
     
     const logout = async () => {
       try{

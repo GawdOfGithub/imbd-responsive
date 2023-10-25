@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { useAuth } from '../Contexts/AuthContext';
 export default function SignIn() {
   const navigate = useNavigate()
-  const {user_is_logged_in,setUser_is_logged_in,auth,signInWithGoogle,logInWithEmailAndPassword} = useAuth()
+  const {setUser_is_logged_in,auth,signInWithGoogle,logInWithEmailAndPassword} = useAuth()
   const [visibility, setVisibility] = useState("false");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");       

@@ -5,9 +5,8 @@ import { useState } from 'react';
 import { Loader } from './Loader';
 import { useAuth } from '../Contexts/AuthContext';
 
-import app from '../firebase';
 export const MovieList = () => {
-  const {updateDoc,collectionRef,doc,setDoc,user,getDoc,getUserDocRef,handleUpdate} = useAuth()
+  const {handleUpdate} = useAuth()
   const { search,isSearching,setIsSearching } = useMainContext();
   const url = `https://api.themoviedb.org/3/search/movie?query=${search}`;
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
