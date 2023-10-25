@@ -36,7 +36,7 @@ export const RealWatchList = () => {
           const userDocRef = getUserDocRef(user);
           const userDocSnapshot = await getDoc(userDocRef);
           const userData = userDocSnapshot.data();
-          
+
           if (userData && userData.ids) {
             setBigData(userData.ids);
           }
@@ -54,7 +54,7 @@ export const RealWatchList = () => {
       const results = [];
 
       for (const movieId of bigData) {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}`; // Replace with your API key
+        const url = `https://api.themoviedb.org/3/movie/${movieId}`;
         const data = await fetchData(url);
 
         if (data) {
@@ -62,7 +62,7 @@ export const RealWatchList = () => {
         }
       }
 
-      setBigWatchData({ results });
+      setBigWatchData((prevData) => ({ results: [...prevData.results, ...results] }));
       setIsLoading(false);
     };
 
@@ -76,7 +76,7 @@ export const RealWatchList = () => {
   }, [bigWatchData]);
 
   return (
-    <div>
+    <div className="container">
       {isLoading ? (
         <Loader />
       ) : (
