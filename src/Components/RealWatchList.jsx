@@ -6,13 +6,15 @@ import { Loader } from './Loader';
 import { useAuth } from '../Contexts/AuthContext';
 import app from '../firebase';
 export const RealWatchList = () => {
-  const {updateDoc,collectionRef,doc,setDoc,user,getDoc,getUserDocRef,handleUpdate} = useAuth()
+  
   
   const url = `https://api.themoviedb.org/3/movie/447404`;
+  const url2 =  `https://api.themoviedb.org/3/movie/605`;
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   const alternative = 'https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg';
-  const { data, loading } = useFetch(null, url);
-  const [watchData, setWatchData] = useState({data :[]});
+
+  const [watchData, setWatchData] = useState()
+  const { data, loading } = useFetch(watchData, url);
   const [isloading, setIsLoading] = useState(true);
 
  console.log(watchData)
@@ -21,21 +23,24 @@ export const RealWatchList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (data ) {
       try {
-        if (data ) {
+     
+          console.log(data);
           setWatchData(data);
           setIsLoading(loading);
         } 
+        catch (error) {
+          console.log(error);
+        } finally {
+          setIsLoading(false);
+        }
           
         
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     };
     fetchData();
-  }, [watchData,loading, isloading]);
+  }, [watchData,loading, isloading,data]);
 
   return (
     <>
@@ -43,25 +48,27 @@ export const RealWatchList = () => {
         <Loader />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 ">
-          {watchData.map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-4">
-              <img
-                src={item.backdrop_path ? imageUrl + item.backdrop_path : alternative}
+          
+            <div className="bg-white rounded-lg shadow-lg p-4">
+               <img
+                src={ data.backdrop_path ? imageUrl + data.backdrop_path : alternative}
                 alt="image"
                 className="w-full h-48 object-cover rounded-md"
-              />
+              /> 
               <div className="mt-4">
-                <div className="text-xl font-extrabold text-black">{item.original_title}</div>
-                <div className="text-gray-600">Released: {item.release_date}</div>
-                <div className="text-yellow-500">🌟 {item.popularity}</div>
-                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none" onClick= {()=>handleUpdateLocal(item.id)}>
-                  Add to Watchlist
+                <div className="text-xl font-extrabold text-black">{data.original_title}</div>
+                <div className="text-gray-600">Released: {data.release_date}</div>
+                <div className="text-yellow-500">🌟 {data.popularity}</div>
+                <button className="mt-2 px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none" onClick= {()=>handleRemovalLocal(data.id)}>
+                Remove from WatchList
                 </button>
+                <div className='text-black font-bold mt-3'>{data.overview}</div>
+               
               </div>
             </div>
-          ))}
+          
         </div>
       )}
     </>
-  );
+  )
 }
