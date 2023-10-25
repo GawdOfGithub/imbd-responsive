@@ -9,7 +9,7 @@ async function fetchData(url) {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNGYzYTA3N2FlMDg4Yzc3Zjg2ZjQ3YWVmMDk0MjE4ZiIsInN1YiI6IjY1MmU1MjhjY2FlZjJkMDBhZGE3ZTgwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8CFMecPEGw0cyJcWBiw-XdKEqsfd3tzo6pIxCnxlHHQ'// Replace with your API key
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNGYzYTA7IzJkMDBhZGE3ZTgwNiIsInN1YiI6IjY1MmU1MjhjY2FlZjJkMDBhZGE3ZTgwNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8CFMecPEGw0cyJcWBiw-XdKEqsfd3tzo6pIxCnxlHHQ' // Replace with your API key
       },
     });
     const data = await response.json();
@@ -61,12 +61,19 @@ export const RealWatchList = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {/* Render the data from bigWatchData.results */}
           {bigWatchData.results.map((item, index) => (
-            <div key={index}>
-              <img src={`${imageUrl}${item.poster_path || alternative}`} alt={item.title} />
-              <p>{item.title}</p>
+            <div key={index} className="bg-white rounded-lg shadow-lg p-4">
+              <img src={`${imageUrl}${item.poster_path || alternative}`} alt={item.title} className="w-full h-48 object-cover rounded-md" />
+              <div className="mt-4">
+                <div className="text-xl font-extrabold text-black">{item.title}</div>
+                <div className="text-gray-600">Released: {item.release_date}</div>
+                <div className="text-yellow-500">🌟 {item.popularity}</div>
+                <div className="text-black font-bold">{item.overview}</div>
+                
+            
+              </div>
             </div>
           ))}
         </div>
