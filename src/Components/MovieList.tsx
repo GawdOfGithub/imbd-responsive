@@ -15,7 +15,7 @@ export const MovieList = () => {
   const [searchData, setSearchData] = useState({ results: [] });
   const [isloading, setIsLoading] = useState(true);
 
- console.log(searchData)
+ 
 
  
  const handleUpdateLocal = async (id)=>

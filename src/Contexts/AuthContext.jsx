@@ -3,6 +3,7 @@ import { useState } from 'react';
 import  app from '../firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Auth = createContext();
 import {
@@ -97,6 +98,7 @@ export default function AuthProvider({ children }) {
     const [user_is_logged_in, setUser_is_logged_in] = useState("false");
     const [userName,setUserName] = useState("") 
     const [emptyWatchlist, setEmptyWatchlist] = useState(true);
+    const [bigData,setBigData] = useState([])
     
     const logout = async () => {
       try{
@@ -145,6 +147,39 @@ export default function AuthProvider({ children }) {
       
     }
   }
+
+  useEffect  (()=>{
+
+
+    const updateWatchListStatus = async()=> {
+      if (user) {
+        try {
+          const userDocRef = getUserDocRef(user);
+         // Assuming 'uid' is the user's unique identifier
+          console.log("User UID:", user.uid);
+          console.log("User Document Path:", userDocRef.path);
+          const userDocSnapshot = await getDoc(userDocRef);
+    
+          if (userDocSnapshot.exists()) {
+            const userData = userDocSnapshot.data();
+            const currentIds = userData.ids || [];
+            if (currentIds.length > 0) {
+              // If the watchlist is not empty, set emptyWatchlist to false
+              setEmptyWatchlist(false);
+            }
+            
+          }
+            
+            
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      
+    }
+    updateWatchListStatus()
+  },[user, getUserDocRef, getDoc, setEmptyWatchlist])
+ 
   
 
   return (

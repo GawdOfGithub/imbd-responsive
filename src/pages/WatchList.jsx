@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../Contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { RealWatchList } from '../Components/RealWatchList';
 
 
+
 export default function WatchList() {
-  const { user,emptyWatchlist} = useAuth();
+  const {user,emptyWatchlist} = useAuth()
+ 
   
   
  
