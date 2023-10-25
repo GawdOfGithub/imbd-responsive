@@ -4,10 +4,11 @@ import { useMainContext } from '../Contexts/MainContext';
 import { useState } from 'react';
 import { Loader } from './Loader';
 import { useAuth } from '../Contexts/AuthContext';
+
 import app from '../firebase';
 export const MovieList = () => {
   const {updateDoc,collectionRef,doc,setDoc,user,getDoc,getUserDocRef,handleUpdate} = useAuth()
-  const { search } = useMainContext();
+  const { search,isSearching,setIsSearching } = useMainContext();
   const url = `https://api.themoviedb.org/3/search/movie?query=${search}`;
   const imageUrl = 'https://image.tmdb.org/t/p/w500/';
   const alternative = 'https://image.tmdb.org/t/p/w500/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg';
@@ -35,10 +36,14 @@ export const MovieList = () => {
     const fetchData = async () => {
       try {
         if (data && search !== '') {
+          setIsSearching(true)
+          console.log(isSearching)
           setSearchData(data);
           setIsLoading(loading);
+          
         } else {
           setSearchData({ results: [] });
+          
         }
       } catch (error) {
         console.log(error);
