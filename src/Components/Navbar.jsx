@@ -6,11 +6,13 @@ import { Sidebar } from './Sidebar';
 import { SearchBar } from './SearchBar';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../Contexts/AuthContext';
-import Person4Icon from '@mui/icons-material/Person4';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const Navbar = () => {
-  const { user_is_logged_in, logout, useAuthState, user } = useAuth();
+  const { logout,user } = useAuth();
   const { sideBar, setSidebar, searchMode, setSearchMode } = useMainContext();
+  
+  
 
   return (
     <div className="fixed w-full bg-black min-h-content text-white">
@@ -36,17 +38,29 @@ export const Navbar = () => {
              <Link to="/"> <SearchOutlinedIcon /></Link>
             </button>
             {user ? (
+              <>
+              <div className='flex '>
+                <img src={user.photoURL} style={{height:"40px",width:"4opx"}} className='rounded-3xl mr-2'></img>
               <button
-                className="bg-black text-white flex items-center mr-4"
+                className="bg-black text-white flex items-center mr-4 font-extrabold"
                 onClick={logout}
+                
               >
-                <Person4Icon className="mr-1" />
+                
+              
                 Logout
               </button>
+              </div>
+              </>
             ) : (
-              <Link to="/signIn" className="bg-black text-white mr-4">
+               <>
+               <div className='flex'>
+              <AccountCircleIcon className='text-2xl mr-1'   />
+              <Link to="/signIn" className="bg-black text-white font-semibold mr-4">
                 SignIn
               </Link>
+              </div>
+              </>
             )}
           </div>
         </>

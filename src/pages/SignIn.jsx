@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuth } from '../Contexts/AuthContext';
 export default function SignIn() {
+  const navigate = useNavigate()
   const {user_is_logged_in,setUser_is_logged_in,auth,signInWithGoogle,logInWithEmailAndPassword} = useAuth()
   const [visibility, setVisibility] = useState("false");
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ export default function SignIn() {
       const user = auth.currentUser
       if(user)
       {
-      alert("you have successfully entered our world")
+       navigate("/watchlist")
       setUser_is_logged_in(true)
       }
       else

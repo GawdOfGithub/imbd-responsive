@@ -33,7 +33,7 @@ export default function WatchList() {
           (<div>
             <img src="variant1.png" alt="Empty Watchlist" className="mx-auto max-w-lg" />
             <p className="text-black font-extrabold text-xl text-center mt-4">
-              Your watchlist is empty, dude.
+              Your watchlist is empty, {user.dispayName}.
             </p>
           </div>):<RealWatchList/>
         )}

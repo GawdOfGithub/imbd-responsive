@@ -6,18 +6,20 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuth } from '../Contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 export default function Register() {
   const {registerWithEmailAndPassword} = useAuth()
   const [visibility, setVisibility] = useState("false");
   const [name, setName] = useState("")
    const [email, setEmail] = useState("")
    const [password, setPassword] = useState("")
-   
+   const navigate = useNavigate()
    const handleRegister =  async(e)=>
    {
     try{
     e.preventDefault()
     await registerWithEmailAndPassword(name,email,password)
+    navigate("/watchlist")
     }
     catch(error)
     {

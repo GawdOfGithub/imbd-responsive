@@ -49,6 +49,8 @@ const signInWithGoogle = async () => {
         email: user.email,
       });
     }
+    
+    console.log(user.name)
   } catch (err) {
     console.error(err);
     alert(err.message);
@@ -114,7 +116,6 @@ export default function AuthProvider({ children }) {
     if (user) {
       try {
         const userDocRef = getUserDocRef(user);
-       // Assuming 'uid' is the user's unique identifier
         console.log("User UID:", user.uid);
         console.log("User Document Path:", userDocRef.path);
         const userDocSnapshot = await getDoc(userDocRef);

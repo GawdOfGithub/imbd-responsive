@@ -14,6 +14,7 @@ const ErrorPage = () => {
   };
 
   return (
+    
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="text-6xl font-extrabold text-orange-400">Error: 404</div>
       <div className="text-3xl">

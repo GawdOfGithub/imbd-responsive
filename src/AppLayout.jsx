@@ -7,12 +7,14 @@ const AppLayout = () => {
     <>
     
       <div className="h-content min-h-screen  ">
-       <Theme /> 
+        
         <div className="flex flex-col">
           <div className="">
+           
             <Navbar />
+           <Theme/>
           </div>
-          <div className="mt-2">
+          <div className="">
             <div className="z-50 text-black ml-12 font-extrabold ">
               Created with ❤️ by Anurag Bhandari{" "}
             </div>
